@@ -1,7 +1,16 @@
 
+import {BrowserRouter,Routes,Route,useNavigate} from "react-router-dom"
+import Home from "./container/Home";
+import Login from "./container/Login";
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline ">HELLO</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="login" element={<Login />}/>
+        <Route path="/*" element={<Home />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
