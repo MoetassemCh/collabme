@@ -31,13 +31,13 @@ const Login = () => {
 
 useEffect(() => {
   function start() {
-    gapi.client.init({
+    gapi.auth2.init({
       clientId:CLIENTID,
-      scope: "email",
+      scope: "",
     });
   }
   gapi.load("client:auth2", start);
-}, []);
+});
 
   return (
     <div className="flex justify-start items-center flex-col h-screen">
@@ -74,6 +74,7 @@ useEffect(() => {
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy="single_host_origin"
+              isSignedIn={true}
             />
           </div>
         </div>
