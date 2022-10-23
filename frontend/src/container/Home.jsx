@@ -1,4 +1,4 @@
-import { useRef,useState,useEffect } from "react"
+import { useState,useEffect } from "react"
 import {HiMenu} from 'react-icons/hi'
 import { AiFillCloseCircle } from "react-icons/ai";
 import {Link,Route,Routes} from 'react-router-dom'
@@ -13,7 +13,7 @@ import { fetchUser } from "../utils/fetchUser";
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState();
-  const scrollRef = useRef(null);
+
 
   const userInfo =fetchUser()
 
@@ -27,7 +27,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    scrollRef.current.scrollTo(0, 0);
+  window.scrollTo(0, 0);
   });
 
   return (
@@ -66,7 +66,7 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      <div className="pb-2 flex-1 h-screen overflow-y-scroll">
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />

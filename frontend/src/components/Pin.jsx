@@ -103,9 +103,11 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 hover:shadow-md"
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {destination.length > 20
-                    ? destination.slice(8, 20)
-                    : destination.slice(8)}
+                  {destination.length.length > 15
+                    ? `${destination.slice(0, 15)}...`
+                    : destination}
+                  {/* .length > 20 ? destination.slice(8, 20) :
+                  destination.slice(8)} */}
                 </a>
               )}
               {postedBy?._id === user.googleId && (
@@ -124,10 +126,16 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
           </div>
         )}
       </div>
-      <Link to={`user-profile/${postedBy?._id}`}
-       className="flex gap-2 mt-2 items-center">
-        <img src={postedBy?.image} className='w-8 h-8 rounded-full object-cover' alt="user-profile" />
-<p className='font-semibold capitalize'>{postedBy?.userName}</p>
+      <Link
+        to={`user-profile/${postedBy?._id}`}
+        className="flex gap-2 mt-2 items-center"
+      >
+        <img
+          src={postedBy?.image}
+          className="w-8 h-8 rounded-full object-cover"
+          alt="user-profile"
+        />
+        <p className="font-semibold capitalize">{postedBy?.userName}</p>
       </Link>
     </div>
   );
